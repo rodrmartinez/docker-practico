@@ -1,0 +1,25 @@
+# Observatory Service
+
+# Import framework
+from flask import Flask
+from flask_restful import Resource, Api
+
+# Instantiate the app
+app = Flask(__name__)
+api = Api(app)
+
+class Observatory(Resource):
+    def get(self):
+        return {
+            'Galaxias': ['Via Lactea', 'Andromeda', 
+            'Nube de Magallanes',
+            'NGC 6753','ESO 486-21',
+            ]
+        }
+
+# Create routes
+api.add_resource(Observatory, '/')
+
+# Run the application
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=80, debug=True)
